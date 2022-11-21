@@ -8,5 +8,5 @@ npm i
 
 Start the script with a specified stock ticker (GME) and price (175)
 ```bash
-node . GME 175
+npm start -- GME 175
 ```
