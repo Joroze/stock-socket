@@ -1,5 +1,4 @@
 import dotenv from 'dotenv'
-
 import Websocket from 'ws'
 import axios from 'axios'
 import lodash from 'lodash'
@@ -16,8 +15,6 @@ if (process.env.HUE_BRIDGE_HOST === undefined) {
   process.exit(1)
 }
 
-const ws = new Websocket(process.env.FINNHUB_HOST)
-
 if (process.argv.length < 4) {
   console.error('ERROR: Missing arguments: TICKER and PRICE')
   process.exit()
@@ -25,7 +22,10 @@ if (process.argv.length < 4) {
 
 const TICKER_SYMBOL = process.argv[2].toUpperCase()
 const TICKER_ALERT_PRICE = Number(process.argv[3])
+const ws = new Websocket(process.env.FINNHUB_HOST)
+
 console.log(`Input [${TICKER_SYMBOL}] price: ${TICKER_ALERT_PRICE}`)
+
 let priceAboveFlag = false
 let count = 0
 
